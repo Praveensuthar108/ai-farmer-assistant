@@ -1,0 +1,145 @@
+.weather-container {
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.weather-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.weather-header h2 {
+  color: white;
+  font-size: 28px;
+  margin: 0;
+}
+
+.weather-card {
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.weather-main {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.weather-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.weather-temp {
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.weather-desc {
+  font-size: 24px;
+  text-transform: capitalize;
+  opacity: 0.9;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.weather-detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.detail-label {
+  font-size: 16px;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.detail-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.advice-card {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  background: #edf2f7;
+}
+
+.advice-card h3 {
+  color: #2d3748;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.advice-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.tips-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tips-card h3 {
+  color: #2d3748;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.tips-card ul {
+  padding-left: 20px;
+}
+
+.tips-card li {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .weather-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .weather-header h2 {
+    font-size: 24px;
+  }
+  
+  .weather-icon {
+    font-size: 60px;
+  }
+  
+  .weather-temp {
+    font-size: 48px;
+  }
+  
+  .weather-desc {
+    font-size: 20px;
+  }
+  
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Made with Bob */
