@@ -1,16 +1,10 @@
 package com.farmer.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "crops")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Crop {
     
     @Id
@@ -36,6 +30,66 @@ public class Crop {
     @PrePersist
     protected void onCreate() {
         uploadedAt = LocalDateTime.now();
+    }
+
+    public Crop() {
+    }
+
+    public Crop(Long id, Long userId, String cropName, String imageUrl, LocalDateTime uploadedAt, User user) {
+        this.id = id;
+        this.userId = userId;
+        this.cropName = cropName;
+        this.imageUrl = imageUrl;
+        this.uploadedAt = uploadedAt;
+        this.user = user;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getCropName() {
+        return cropName;
+    }
+
+    public void setCropName(String cropName) {
+        this.cropName = cropName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public LocalDateTime getUploadedAt() {
+        return uploadedAt;
+    }
+
+    public void setUploadedAt(LocalDateTime uploadedAt) {
+        this.uploadedAt = uploadedAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 
