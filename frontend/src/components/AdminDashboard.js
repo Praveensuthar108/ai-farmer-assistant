@@ -89,7 +89,7 @@ function AdminDashboard({ user, onLogout }) {
           {subtitle}
           {trend && (
             <span className={`trend ${trend > 0 ? 'up' : 'down'}`}>
-              {trend > 0 ? '↑' : '↓'} {Math.abs(trend)}%
+              {trend > 0 ? <i className="fa-solid fa-arrow-up"></i> : <i className="fa-solid fa-arrow-down"></i>} {Math.abs(trend)}%
             </span>
           )}
         </div>
@@ -113,7 +113,7 @@ function AdminDashboard({ user, onLogout }) {
       {/* Header */}
       <header className="admin-header">
         <div className="header-left">
-          <h1>🌾 Admin Dashboard</h1>
+          <h1><i className="fa-solid fa-wheat-awn"></i> Admin Dashboard</h1>
           <p>AI Farmer Assistant Analytics</p>
         </div>
         <div className="header-right">
@@ -140,7 +140,7 @@ function AdminDashboard({ user, onLogout }) {
         {/* Stats Overview */}
         <section className="stats-overview">
           <StatCard
-            icon="👥"
+            icon={<i className="fa-solid fa-users"></i>}
             title="Total Users"
             value={stats.totalUsers.toLocaleString()}
             subtitle="Registered farmers"
@@ -148,7 +148,7 @@ function AdminDashboard({ user, onLogout }) {
             trend={12.5}
           />
           <StatCard
-            icon="✅"
+            icon={<i className="fa-solid fa-check-circle"></i>}
             title="Active Users"
             value={stats.activeUsers.toLocaleString()}
             subtitle={`${((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}% active rate`}
@@ -156,7 +156,7 @@ function AdminDashboard({ user, onLogout }) {
             trend={8.3}
           />
           <StatCard
-            icon="🌱"
+            icon={<i className="fa-solid fa-seedling"></i>}
             title="Total Crops"
             value={stats.totalCrops.toLocaleString()}
             subtitle="Crops analyzed"
@@ -164,7 +164,7 @@ function AdminDashboard({ user, onLogout }) {
             trend={15.7}
           />
           <StatCard
-            icon="🔍"
+            icon={<i className="fa-solid fa-magnifying-glass"></i>}
             title="Diseases Detected"
             value={stats.totalDiseases.toLocaleString()}
             subtitle="Disease detections"
@@ -172,7 +172,7 @@ function AdminDashboard({ user, onLogout }) {
             trend={-3.2}
           />
           <StatCard
-            icon="💬"
+            icon={<i className="fa-solid fa-comments"></i>}
             title="Chat Sessions"
             value={stats.totalChats.toLocaleString()}
             subtitle="AI conversations"
@@ -186,7 +186,7 @@ function AdminDashboard({ user, onLogout }) {
           {/* User Growth Chart */}
           <div className="chart-card">
             <div className="chart-header">
-              <h3>📈 User Growth Trend</h3>
+              <h3><i className="fa-solid fa-chart-line"></i> User Growth Trend</h3>
               <span className="chart-subtitle">Monthly active users</span>
             </div>
             <div className="bar-chart">
@@ -243,7 +243,7 @@ function AdminDashboard({ user, onLogout }) {
         <section className="crop-stats-section">
           <div className="chart-card full-width">
             <div className="chart-header">
-              <h3>🌾 Crop Analysis</h3>
+              <h3><i className="fa-solid fa-wheat-awn"></i> Crop Analysis</h3>
               <span className="chart-subtitle">Crops by upload count</span>
             </div>
             <div className="crop-grid">
@@ -270,9 +270,9 @@ function AdminDashboard({ user, onLogout }) {
         <section className="recent-users-section">
           <div className="table-card">
             <div className="table-header">
-              <h3>👥 Recent Users</h3>
+              <h3><i className="fa-solid fa-users"></i> Recent Users</h3>
               <button className="btn-link" onClick={() => navigate('/admin/users')}>
-                View All →
+                View All <i className="fa-solid fa-arrow-right"></i>
               </button>
             </div>
             <div className="table-responsive">
@@ -305,8 +305,8 @@ function AdminDashboard({ user, onLogout }) {
                         <span className="status-badge active">Active</span>
                       </td>
                       <td>
-                        <button className="btn-icon" title="View Details">👁️</button>
-                        <button className="btn-icon" title="Edit">✏️</button>
+                        <button className="btn-icon" title="View Details"><i className="fa-solid fa-eye"></i></button>
+                        <button className="btn-icon" title="Edit"><i className="fa-solid fa-pen"></i></button>
                       </td>
                     </tr>
                   ))}
@@ -319,22 +319,22 @@ function AdminDashboard({ user, onLogout }) {
         {/* Quick Actions */}
         <section className="quick-actions">
           <div className="action-card" onClick={() => navigate('/admin/users')}>
-            <span className="action-icon">👥</span>
+            <span className="action-icon"><i className="fa-solid fa-users"></i></span>
             <h4>Manage Users</h4>
             <p>View and manage all farmers</p>
           </div>
           <div className="action-card" onClick={() => navigate('/admin/diseases')}>
-            <span className="action-icon">🦠</span>
+            <span className="action-icon"><i className="fa-solid fa-virus"></i></span>
             <h4>Disease Reports</h4>
             <p>Analyze disease patterns</p>
           </div>
           <div className="action-card" onClick={() => navigate('/admin/crops')}>
-            <span className="action-icon">🌱</span>
+            <span className="action-icon"><i className="fa-solid fa-seedling"></i></span>
             <h4>Crop Analytics</h4>
             <p>View crop statistics</p>
           </div>
           <div className="action-card" onClick={() => navigate('/admin/settings')}>
-            <span className="action-icon">⚙️</span>
+            <span className="action-icon"><i className="fa-solid fa-gear"></i></span>
             <h4>Settings</h4>
             <p>Configure system settings</p>
           </div>
