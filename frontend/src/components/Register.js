@@ -9,8 +9,10 @@ function Register({ onRegister }) {
     phone: '',
     password: '',
     language: 'hi',
+    role: 'USER',
     latitude: '',
     longitude: '',
+    location: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -106,6 +108,13 @@ function Register({ onRegister }) {
             <select name="language" value={formData.language} onChange={handleChange}>
               <option value="hi">Hindi (हिंदी)</option>
               <option value="mr">Marathi (मराठी)</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label>Register As</label>
+            <select name="role" value={formData.role} onChange={handleChange} required>
+              <option value="USER">👨‍🌾 Farmer (User)</option>
+              <option value="ADMIN">⚙️ Administrator</option>
             </select>
           </div>
           <div className="input-group">

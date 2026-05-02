@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import AdminDashboard from './components/AdminDashboard';
 import UploadImage from './components/UploadImage';
 import DiseaseResult from './components/DiseaseResult';
 import ChatAssistant from './components/ChatAssistant';
 import Weather from './components/Weather';
+import GovernmentBenefits from './components/GovernmentBenefits';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,6 +29,12 @@ function App() {
     setUser(userData);
     localStorage.setItem('token', userData.token);
     localStorage.setItem('user', JSON.stringify(userData));
+    // Redirect based on role
+    if (userData.role === 'ADMIN') {
+      window.location.href = '/admin';
+    } else {
+      window.location.href = '/dashboard';
+    }
   };
 
   const handleLogout = () => {
@@ -42,7 +51,7 @@ function App() {
           path="/login"
           element={
             isAuthenticated ? (
-              <Navigate to="/dashboard" />
+              user?.role === 'ADMIN' ? <Navigate to="/admin" /> : <Navigate to="/dashboard" />
             ) : (
               <Login onLogin={handleLogin} />
             )
@@ -52,7 +61,7 @@ function App() {
           path="/register"
           element={
             isAuthenticated ? (
-              <Navigate to="/dashboard" />
+              user?.role === 'ADMIN' ? <Navigate to="/admin" /> : <Navigate to="/dashboard" />
             ) : (
               <Register onRegister={handleLogin} />
             )
@@ -62,7 +71,11 @@ function App() {
           path="/dashboard"
           element={
             isAuthenticated ? (
-              <Dashboard user={user} onLogout={handleLogout} />
+              user?.role === 'ADMIN' ? (
+                <Navigate to="/admin" />
+              ) : (
+                <Dashboard user={user} onLogout={handleLogout} />
+              )
             ) : (
               <Navigate to="/login" />
             )
@@ -108,7 +121,40 @@ function App() {
             )
           }
         />
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route
+          path="/benefits"
+          element={
+            isAuthenticated ? (
+              <GovernmentBenefits user={user} onLogout={handleLogout} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            isAuthenticated ? (
+              user?.role === 'ADMIN' ? (
+                <AdminDashboard user={user} onLogout={handleLogout} />
+              ) : (
+                <Navigate to="/dashboard" />
+              )
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              user?.role === 'ADMIN' ? <Navigate to="/admin" /> : <Navigate to="/dashboard" />
+            ) : (
+              <Home />
+            )
+          }
+        />
       </Routes>
     </Router>
   );

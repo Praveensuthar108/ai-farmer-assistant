@@ -1,6 +1,7 @@
 .weather-container {
   min-height: 100vh;
   padding: 20px 0;
+  background: linear-gradient(135deg, #f5f9f0 0%, #e8f5e0 100%);
 }
 
 .weather-header {
@@ -11,7 +12,7 @@
 }
 
 .weather-header h2 {
-  color: white;
+  color: rgb(216, 0, 0);
   font-size: 28px;
   margin: 0;
 }

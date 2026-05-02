@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  background: linear-gradient(135deg, #f5f9f0 0%, #e8f5e0 100%);
 }
 
 .auth-card {

@@ -6,6 +6,8 @@ public class AuthResponse {
     private String name;
     private String phone;
     private String language;
+    private String role;
+    private Boolean isApproved;
 
     public AuthResponse(String token, Long userId, String name, String phone, String language) {
         this.token = token;
@@ -53,6 +55,22 @@ public class AuthResponse {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Boolean getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(Boolean isApproved) {
+        this.isApproved = isApproved;
     }
 }
 

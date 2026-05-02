@@ -17,9 +17,13 @@ public class UserRegistrationRequest {
     
     private String language = "hi";
     
+    private String role = "USER";
+    
     private Double latitude;
     
     private Double longitude;
+    
+    private String location;
 
     public String getName() {
         return name;
@@ -67,6 +71,22 @@ public class UserRegistrationRequest {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
 

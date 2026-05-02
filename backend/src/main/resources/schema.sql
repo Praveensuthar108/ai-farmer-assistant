@@ -7,10 +7,14 @@ CREATE TABLE IF NOT EXISTS users (
     phone VARCHAR(15) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     language VARCHAR(10) DEFAULT 'hi',
+    role VARCHAR(20) DEFAULT 'USER',
     latitude DECIMAL(10, 8),
     longitude DECIMAL(11, 8),
+    location VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_phone (phone)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_phone (phone),
+    INDEX idx_role (role)
 );
 
 -- Crops Table
