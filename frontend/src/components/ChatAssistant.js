@@ -71,14 +71,14 @@ function ChatAssistant({ user }) {
           <button className="btn btn-secondary" onClick={() => navigate('/dashboard')}>
             ← Back to Dashboard
           </button>
-          <h2>💬 AI Farming Assistant</h2>
+          <h2><i className="fa-solid fa-comments"></i> AI Farming Assistant</h2>
         </div>
 
         <div className="chat-card card">
           <div className="chat-messages">
             {messages.length === 0 && (
               <div className="welcome-message">
-                <h3>नमस्ते! मैं आपका कृषि सहायक हूं 🌾</h3>
+                <h3>नमस्ते! मैं आपका कृषि सहायक हूं <i className="fa-solid fa-wheat-awn"></i></h3>
                 <p>मुझसे खेती से संबंधित कोई भी सवाल पूछें:</p>
                 <ul>
                   <li>फसल की देखभाल</li>

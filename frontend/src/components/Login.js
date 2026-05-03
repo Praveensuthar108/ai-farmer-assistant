@@ -38,7 +38,7 @@ function Login({ onLogin }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>🌾 AI Farmer Assistant</h1>
+        <h1><i className="fa-solid fa-wheat-awn"></i> AI Farmer Assistant</h1>
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
