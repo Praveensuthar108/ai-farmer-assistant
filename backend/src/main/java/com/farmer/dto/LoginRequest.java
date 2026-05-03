@@ -1,9 +1,7 @@
 package com.farmer.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
 
-@Data
 public class LoginRequest {
     
     @NotBlank(message = "Phone is required")
@@ -11,6 +9,22 @@ public class LoginRequest {
     
     @NotBlank(message = "Password is required")
     private String password;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
 
 // Made with Bob

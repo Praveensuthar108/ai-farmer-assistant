@@ -56,11 +56,11 @@ function Weather({ user }) {
 
   const getWeatherIcon = (description) => {
     const desc = description.toLowerCase();
-    if (desc.includes('rain')) return '🌧️';
-    if (desc.includes('cloud')) return '☁️';
-    if (desc.includes('clear')) return '☀️';
-    if (desc.includes('storm')) return '⛈️';
-    return '🌤️';
+    if (desc.includes('rain')) return <i className="fa-solid fa-cloud-rain"></i>;
+    if (desc.includes('cloud')) return <i className="fa-solid fa-cloud"></i>;
+    if (desc.includes('clear')) return <i className="fa-solid fa-sun"></i>;
+    if (desc.includes('storm')) return <i className="fa-solid fa-cloud-bolt"></i>;
+    return <i className="fa-solid fa-cloud-sun"></i>;
   };
 
   return (
@@ -70,7 +70,7 @@ function Weather({ user }) {
           <button className="btn btn-secondary" onClick={() => navigate('/dashboard')}>
             ← Back to Dashboard
           </button>
-          <h2>🌤️ Weather Information</h2>
+          <h2><i className="fa-solid fa-cloud-sun"></i> Weather Information</h2>
         </div>
 
         {loading && <div className="loading">Loading weather data...</div>}

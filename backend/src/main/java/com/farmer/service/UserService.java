@@ -32,14 +32,27 @@ public class UserService {
         user.setPhone(request.getPhone());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setLanguage(request.getLanguage());
+        user.setRole(request.getRole() != null ? request.getRole() : "USER");
+        
+        // Admin registrations require approval, regular users are auto-approved
+        if ("ADMIN".equals(user.getRole())) {
+            user.setIsApproved(false);
+        } else {
+            user.setIsApproved(true);
+        }
+        
         user.setLatitude(request.getLatitude());
         user.setLongitude(request.getLongitude());
+        user.setLocation(request.getLocation());
 
         user = userRepository.save(user);
 
         String token = jwtUtil.generateToken(user.getPhone(), user.getId());
 
-        return new AuthResponse(token, user.getId(), user.getName(), user.getPhone(), user.getLanguage());
+        AuthResponse response = new AuthResponse(token, user.getId(), user.getName(), user.getPhone(), user.getLanguage());
+        response.setRole(user.getRole());
+        response.setIsApproved(user.getIsApproved());
+        return response;
     }
 
     public AuthResponse loginUser(LoginRequest request) {
@@ -49,10 +62,18 @@ public class UserService {
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException("Invalid phone or password");
         }
+        
+        // Check if admin is approved
+        if ("ADMIN".equals(user.getRole()) && !user.getIsApproved()) {
+            throw new RuntimeException("Your admin account is pending approval. Please wait for approval from the main administrator.");
+        }
 
         String token = jwtUtil.generateToken(user.getPhone(), user.getId());
 
-        return new AuthResponse(token, user.getId(), user.getName(), user.getPhone(), user.getLanguage());
+        AuthResponse response = new AuthResponse(token, user.getId(), user.getName(), user.getPhone(), user.getLanguage());
+        response.setRole(user.getRole());
+        response.setIsApproved(user.getIsApproved());
+        return response;
     }
 
     public User getUserById(Long id) {

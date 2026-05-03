@@ -1,16 +1,10 @@
 package com.farmer.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "treatments")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Treatment {
     
     @Id
@@ -35,6 +29,66 @@ public class Treatment {
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
+    }
+
+    public Treatment() {
+    }
+
+    public Treatment(Long id, String diseaseName, String solution, String fertilizer, String precautions, LocalDateTime createdAt) {
+        this.id = id;
+        this.diseaseName = diseaseName;
+        this.solution = solution;
+        this.fertilizer = fertilizer;
+        this.precautions = precautions;
+        this.createdAt = createdAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
+    }
+
+    public String getFertilizer() {
+        return fertilizer;
+    }
+
+    public void setFertilizer(String fertilizer) {
+        this.fertilizer = fertilizer;
+    }
+
+    public String getPrecautions() {
+        return precautions;
+    }
+
+    public void setPrecautions(String precautions) {
+        this.precautions = precautions;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

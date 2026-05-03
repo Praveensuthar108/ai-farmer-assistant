@@ -9,8 +9,10 @@ function Register({ onRegister }) {
     phone: '',
     password: '',
     language: 'hi',
+    role: 'USER',
     latitude: '',
     longitude: '',
+    location: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -64,7 +66,7 @@ function Register({ onRegister }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>🌾 AI Farmer Assistant</h1>
+        <h1><i className="fa-solid fa-wheat-awn"></i> AI Farmer Assistant</h1>
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -106,6 +108,13 @@ function Register({ onRegister }) {
             <select name="language" value={formData.language} onChange={handleChange}>
               <option value="hi">Hindi (हिंदी)</option>
               <option value="mr">Marathi (मराठी)</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label>Register As</label>
+            <select name="role" value={formData.role} onChange={handleChange} required>
+              <option value="USER"><i className="fa-solid fa-user"></i> Farmer (User)</option>
+              <option value="ADMIN"><i className="fa-solid fa-gear"></i> Administrator</option>
             </select>
           </div>
           <div className="input-group">
